@@ -14,7 +14,7 @@ dt-launchfile-init
 
 # launching app 
 #TODO: find launch file in ROS package
-dt-exec roslaunch duckiedrone-ardupilot-driver duckiedrone-ardupilot-driver.launch
+dt-exec roslaunch ardupilot_driver mavros.launch
 
 # ----------------------------------------------------------------------------
 # YOUR CODE ABOVE THIS LINE
