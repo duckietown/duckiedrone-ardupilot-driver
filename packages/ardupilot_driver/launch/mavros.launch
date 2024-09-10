@@ -1,0 +1,15 @@
+<launch>
+  <node pkg="mavros" type="mavros_node" name="mavros" output="screen">
+    <!-- Specify the serial connection to the flight controller -->
+    <param name="fcu_url" value="/dev/ttyACM0:115200" />
+    
+    <!-- Enable GCS proxying by setting the GCS URL (e.g., UDP connection) -->
+    <param name="gcs_url" value="tcp-l://" />
+    
+    <param name="target_system_id" value="1" />
+    <param name="target_component_id" value="1" />
+
+    <!-- Load additional MAVROS configurations from YAML file -->
+    <rosparam command="load" file="$(find mavros)/launch/apm_config.yaml" />
+  </node>
+</launch>
