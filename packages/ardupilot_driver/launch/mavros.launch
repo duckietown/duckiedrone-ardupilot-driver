@@ -1,11 +1,11 @@
 <launch>
   <!-- Define an argument that defaults to the VEHICLE_NAME environment variable -->
   <arg name="veh" default="$(env VEHICLE_NAME)" />
-
+  <arg name="robot_hardware" default="$(env ROBOT_HARDWARE)" />
   <group ns="$(arg veh)">
     <node pkg="mavros" type="mavros_node" name="mavros" output="screen">
       <!-- Specify the serial connection to the flight controller -->
-      <param name="fcu_url" value="/dev/ttyACM0:115200" />
+      <param name="fcu_url" value="$(eval 'udp://0.0.0.0:14550@' if arg('robot_hardware') == 'virtual' else '/dev/ttyACM0:115200')" />
       
       <!-- Enable GCS proxying by setting the GCS URL (e.g., UDP connection) -->
       <param name="gcs_url" value="tcp-l://" />
